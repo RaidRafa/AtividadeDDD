@@ -36,6 +36,10 @@ class Usuario:
             self._senha = nova_senha
 
     @property
+    def id(self):
+        return self._id
+
+    @property
     def endereco(self):
         return self._endereco
 
