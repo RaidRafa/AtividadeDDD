@@ -1,11 +1,19 @@
 import secrets
+import string
+from src.GerenciarUsuarios.Endereco.endereco import Endereco
+
+def gerarId(tamanho = 2):
+    digitos = string.digits
+    novo_id = ''.join(secrets.choice(digitos) for _ in range(tamanho))
+    return novo_id
+
 
 class Usuario:
-    def __init__(self, nome, email, senha, endereco):
+    def __init__(self, nome, email, senha, endereco:Endereco):
         self._nome = nome
         self._email = email
         self._senha = senha
-        self._id = secrets.token_hex(1)
+        self._id = gerarId(2)
         self._endereco = endereco
 
     @property
@@ -26,7 +34,7 @@ class Usuario:
 
     @property
     def senha(self):
-        return self._endereco
+        return self._senha
 
     @senha.setter
     def senha(self, nova_senha):
